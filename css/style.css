@@ -1,99 +1,107 @@
-/* Reset box sizing for consistency */
+/* Reset and Base Styles */
 * {
   box-sizing: border-box;
 }
-
-/* Basic font for the page */
 html {
   font-family: sans-serif;
 }
-
-/* Remove default browser margin; give a light gray background */
 body {
   margin: 0;
   background: #ccc;
 }
 
-/* Main letter container */
+/* Main Letter Container (A4 Size) */
 article {
-  /* A4 dimensions in mm */
   width: 210mm;
   height: 297mm;
   margin: 20px auto;
   position: relative;
-
-  /* White background and 1mm top and bottom borders */
   background-color: #fff;
   border-top: 1mm solid #cc0000;
   border-bottom: 1mm solid #cc0000;
-
-  /*
-    Fallback background: just the top image (for older browsers)
-    now using the correct path for the image
-  */
-  background: #fff url("img/top-image.png") no-repeat center top;
-
-  /*
-    Multiple backgrounds for modern browsers:
-      - top image pinned to the top
-      - bottom image pinned to the bottom
-      - a semi-transparent gradient overlay
-  */
-  background:
-    url("img/top-image.png") no-repeat center top,
-    url("img/bottom-image.png") no-repeat center bottom,
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.5) 0%,
-      rgba(0,0,0,0) 20%,
-      rgba(0,0,0,0) 80%,
-      rgba(0,0,0,0.5) 100%
-    );
-  background-size: auto, auto, 100% 100%;
-  background-repeat: no-repeat, no-repeat, no-repeat;
+  overflow: hidden;
 }
 
-/* Position the address block at the bottom-right */
-address {
+/* Background Images */
+.bg-image {
   position: absolute;
-  bottom: 8mm;
-  right: 20mm;
+  width: 100%;
+  height: auto;
+  z-index: 0;  /* lowest layer */
+}
+.bg-top {
+  top: 0;
+  left: 0;
+}
+.bg-bottom {
+  bottom: 0;
+  left: 0;
 }
 
-/* Heading with the logo as a background image */
+/* Gradient Overlay */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0) 20%,
+    rgba(0,0,0,0) 80%,
+    rgba(0,0,0,0.5) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Main Content Container */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header (h1) with Logo as Background */
 h1 {
   position: absolute;
   top: 12mm;
   left: 20mm;
   width: 128px;
   height: 128px;
+  margin: 0;
+  text-align: center;
   font-size: 20px;
   letter-spacing: 1px;
-  text-align: center;
-  padding: 44px 0;
   color: white;
   text-shadow: 1px 1px 1px black;
-
-  /* The round logo as a background image using the correct path */
-  background: url("img/logo.png") no-repeat center center;
+  /* Logo as background image (path adjusted because css is in /css) */
+  background: url("../img/logo.png") no-repeat center center;
   background-size: contain;
-
-  /*
-    First approach: filter-based drop shadow (commented out for demonstration):
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-  */
-
-  /* Second approach: cross-browser box-shadow matching the round shape */
-  -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
   border-radius: 50%;
+  /* Original filter drop shadow (commented out) */
+  /* filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4)); */
+  /* Cross-browser drop shadow */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  /* Keep the header within the content layer */
+  z-index: 2;
 }
 
-/* Two-column layout inside the letter */
-.left-column,
-.right-column {
-  float: left;
-  width: 45%;
-  padding: 10mm;
-  box-sizing: border-box;
+/* Two-Column Layout Using Flexbox */
+.columns {
+  display: flex;
+  gap: 10mm;
+  margin: 160px 10mm 10mm; /* top margin to clear the header */
+}
+.left-column, .right-column {
+  flex: 1;
+}
+
+/* Address Block */
+address {
+  position: absolute;
+  bottom: 8mm;
+  right: 20mm;
 }

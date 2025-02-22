@@ -4,11 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Fancy letterheaded paper</title>
-
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Simple script to display the selected radio button text -->
+    <link rel="stylesheet" href="css/style.css">
     <script>
       function showSelected() {
         const radios = document.getElementsByName("choice");
@@ -25,68 +21,58 @@
   </head>
   <body>
     <article>
-      <!-- The main heading with a background logo -->
-      <h1>Awesome<br>Company</h1>
-
-      <!-- Two-column layout with sample content -->
-      <div class="left-column">
-        <h2>What is Lorem Ipsum?</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Sed non risus. Suspendisse lectus tortor, dignissim sit amet, 
-          adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. 
-          Maecenas ligula massa, varius a, semper congue, euismod non, mi.
-        </p>
-
-        <h2>Where does it come from?</h2>
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. 
-          It has roots in a piece of classical Latin literature from 45 BC, 
-          making it over 2000 years old.
-        </p>
-
-        <!-- Radio buttons and button that triggers the alert -->
-        <p>
-          <label>
-            <input type="radio" name="choice" value="Option A"> Option A
-          </label>
-          <br>
-          <label>
-            <input type="radio" name="choice" value="Option B"> Option B
-          </label>
-        </p>
-        <button onclick="showSelected()">Show Selected</button>
-      </div>
-
-      <div class="right-column">
-        <h2>Why do we use it?</h2>
-        <p>
-          It is a long established fact that a reader will be distracted by 
-          the readable content of a page when looking at its layout. 
-          The point of using Lorem Ipsum is that it has a more-or-less 
-          normal distribution of letters, as opposed to using 'Content here, 
-          content here', making it look like readable English.
-        </p>
-
-        <h2>Generate Lorem Ipsum</h2>
-        <p>
-          Many desktop publishing packages and web page editors now use 
-          Lorem Ipsum as their default model text, and a search for 
-          'lorem ipsum' will uncover many web sites still in their infancy. 
-        </p>
-      </div>
-
-      <!-- Address positioned at the bottom right -->
-      <address>
-        <p>The Awesome Company</p>
-        <p>
-          102-112 Frail Bend Bridge<br>
-          The Dwindlings<br>
-          Little Hornet<br>
-          HX3 9ZQ<br>
-          UK
-        </p>
-      </address>
+      <!-- Background Images -->
+      <img src="img/top-image.png" alt="Top image" class="bg-image bg-top">
+      <img src="img/bottom-image.png" alt="Bottom image" class="bg-image bg-bottom">
+      <!-- Gradient Overlay -->
+      <div class="gradient-overlay"></div>
+      
+      <!-- Main Content Container -->
+      <div class="content">
+        <!-- Header: h1 now uses the logo as its background image -->
+        <h1>Awesome<br>Company</h1>
+        
+        <!-- Two-Column Content -->
+        <div class="columns">
+          <div class="left-column">
+            <h2>What is Lorem Ipsum?</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.
+            </p>
+            <h2>Where does it come from?</h2>
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+            </p>
+            <p>
+              <label><input type="radio" name="choice" value="Option A"> Option A</label><br>
+              <label><input type="radio" name="choice" value="Option B"> Option B</label>
+            </p>
+            <button onclick="showSelected()">Show Selected</button>
+          </div>
+          <div class="right-column">
+            <h2>Why do we use it?</h2>
+            <p>
+              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+            </p>
+            <h2>Generate Lorem Ipsum</h2>
+            <p>
+              Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Address Block -->
+        <address>
+          <p>The Awesome Company</p>
+          <p>
+            102-112 Frail Bend Bridge<br>
+            The Dwindlings<br>
+            Little Hornet<br>
+            HX3 9ZQ<br>
+            UK
+          </p>
+        </address>
+      </div> <!-- End .content -->
     </article>
   </body>
 </html>
