@@ -1,29 +1,66 @@
+/* Reset box sizing for consistency */
 * {
   box-sizing: border-box;
 }
 
+/* Basic font for the page */
 html {
   font-family: sans-serif;
 }
 
+/* Remove default browser margin; give a light gray background */
 body {
   margin: 0;
   background: #ccc;
 }
 
+/* Main letter container */
 article {
+  /* A4 dimensions in mm */
   width: 210mm;
   height: 297mm;
   margin: 20px auto;
   position: relative;
+
+  /* White background and 1mm top and bottom borders */
+  background-color: #fff;
+  border-top: 1mm solid #cc0000;
+  border-bottom: 1mm solid #cc0000;
+
+  /*
+    Fallback background: just the top image (for older browsers)
+    now using the correct path for the image
+  */
+  background: #fff url("img/top-image.png") no-repeat center top;
+
+  /*
+    Multiple backgrounds for modern browsers:
+      - top image pinned to the top
+      - bottom image pinned to the bottom
+      - a semi-transparent gradient overlay
+  */
+  background:
+    url("img/top-image.png") no-repeat center top,
+    url("img/bottom-image.png") no-repeat center bottom,
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.5) 0%,
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 80%,
+      rgba(0,0,0,0.5) 100%
+    );
+  background-size: auto, auto, 100% 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat;
 }
 
+/* Position the address block at the bottom-right */
 address {
   position: absolute;
   bottom: 8mm;
   right: 20mm;
 }
 
+/* Heading with the logo as a background image */
 h1 {
   position: absolute;
   top: 12mm;
@@ -36,6 +73,27 @@ h1 {
   padding: 44px 0;
   color: white;
   text-shadow: 1px 1px 1px black;
+
+  /* The round logo as a background image using the correct path */
+  background: url("img/logo.png") no-repeat center center;
+  background-size: contain;
+
+  /*
+    First approach: filter-based drop shadow (commented out for demonstration):
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+  */
+
+  /* Second approach: cross-browser box-shadow matching the round shape */
+  -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  border-radius: 50%;
 }
 
-/* Your CSS below here */
+/* Two-column layout inside the letter */
+.left-column,
+.right-column {
+  float: left;
+  width: 45%;
+  padding: 10mm;
+  box-sizing: border-box;
+}
